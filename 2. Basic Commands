@@ -21,3 +21,6 @@ delete '<<tablename>>', '<<row number>>', 'column family:Column Qualifier Name';
 											       : delete 'htab', 'row5', 'colfam1:Sqoop';1528454555537
 
 status, status 'simple', status 'detailed, status 'summary' 				                           : details
+
+alter 'htab',{NAME=> 'colfam2'} 		      : For adding column 
+put 'htab','row1','colfam2: status' , 'Above Average' : For adding data to the new column 
