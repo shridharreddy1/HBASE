@@ -1,0 +1,12 @@
+Namespaces : The internal database concept of Hbase only we will call it as namespace
+             By default we will use default namespace however we can create our own namespace & manage the data in the same.
+   
+list_namespace        : To list all the DB
+To create database    : create_namesace 'gopal_db'
+                      : list namespaces
+                      : create 'gopal_ns:htab','colfam1'
+                      :list_namespace_table 'gopal_ns'
+                      
+                      
+                      
+                      
