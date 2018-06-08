@@ -1,1 +1,51 @@
+GUI of hbase: http://localhost:16010
 
+The process of keeping track of multiple changes happening to a particular tablecell is versioning.
+hbase0.98.x & above version are having the default version as 1.
+
+---How to update data in hbase 
+by using the same 'put' command we can update the very hbase table but hbase internally manages the versioning concept 
+therefore we can see the previous version of update command.
+
+---Delete a column in hbase
+alter 'htab',{NAME=>'colfam2',METHOD=>'delete'}
+
+---Alter command in hbase
+In the below structural changes of hbase tables only we are making use of alter command
+      1. Changing the number of version of a column family 
+      2. Adding/Removing  a column family
+      
+--Versioning  
+      By default versioning is 1 but updating it to 5
+      alter 'htab' ,{NAME => "colfam1",VERSIONS=>5}
+    
+      by using 'put' command change the column values
+      
+      For getting the version values
+      scan 'htab',VERSIONS=>5 
+      no limit for version but will display the top 5 version
+      
+      
+      
+  NOTE : Hbase will only understand one datatype i.e BYTEARRAY
+         
+         There is no query support as far as hbase is concerned however to access the data from hbase table 
+         there is seprate component called apache Phoenix which is a SQL skin on top of Hbase
+         
+         we will not get 'natural join' support from hbase.
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
