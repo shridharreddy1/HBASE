@@ -5,7 +5,7 @@ list_namespace        : To list all the DB
 To create database    : create_namesace 'gopal_db'
                       : list namespaces
                       : create 'gopal_ns:htab','colfam1'
-                      :list_namespace_table 'gopal_ns'
+                      : list_namespace_table 'gopal_ns'
                       
                       
                       
