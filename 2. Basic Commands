@@ -1,21 +1,21 @@
 To know all Hbase  Commands in details =  <https://learnhbase.wordpress.com/2013/03/02/hbase-shell-commands/>
 
-list 				              : To display the table 
-create 'htab' ,'colfam1'	: To create the table (but column name is mandatory)
-exists 'htab'			        : To check where 'htab' exist or not 
-list 'htab'		          	: To any table name exist as 'htab'
-version 			            : To know the current/installed version of hbase
-count 'htab'			        : Displays the number of the record present 
-whoami				            : With what user i am driving commands
-describe 'htab'			      : Description of table 
-scan 'htab90'			        : Same as 'select * from <tablename>'
+list 			 : To display the table 
+create 'htab' ,'colfam1' : To create the table (but column name is mandatory)
+exists 'htab'		 : To check where 'htab' exist or not 
+list 'htab'		 : To any table name exist as 'htab'
+version 	         : To know the current/installed version of hbase
+count 'htab'		 : Displays the number of the record present 
+whoami		         : With what user i am driving commands
+describe 'htab'	         : Description of table 
+scan 'htab90'	         : Same as 'select * from <tablename>'
 
 for entering data into table    : put '<<tablename>>','<<row>>','<<colfam>>:<<column qualifier name>>', '<<values>>'
 			                         	: put 'htab' , 'row1', 'colfam1:HDFS' 'For storage only'
 
 get 'htab','row6'	                      	: To get a particular row number record
 
-scan 'htab',{LIMIT=>3,STARTROW=>'row4'}   : To view the particular row with limit functions 	
+scan 'htab',{LIMIT=>3,STARTROW=>'row4'}         : To view the particular row with limit functions 	
 
 delete '<<tablename>>', '<<row number>>', 'column family:Column Qualifier Name'; Timestamp     : To delete any particluar row   
 											       : delete 'htab', 'row5', 'colfam1:Sqoop';1528454555537
