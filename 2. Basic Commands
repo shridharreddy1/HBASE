@@ -20,7 +20,7 @@ scan 'htab',{LIMIT=>3,STARTROW=>'row4'}         : To view the particular row wit
 delete '<<tablename>>', '<<row number>>', 'column family:Column Qualifier Name'; Timestamp     : To delete any particluar row   
 											       : delete 'htab', 'row5', 'colfam1:Sqoop';1528454555537
 
-status, status 'simple', status 'detailed, status 'summary' 				                           : details
+status, status 'simple', status 'detailed, status 'summary' 				       : details
 
 alter 'htab',{NAME=> 'colfam2'} 		      : For adding column 
 put 'htab','row1','colfam2: status' , 'Above Average' : For adding data to the new column 
