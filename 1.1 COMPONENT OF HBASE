@@ -1,0 +1,57 @@
+---Component of HBase-----------------------------------
+
+> Hmaster(Hmaster)
+> Zookeeper(HQuorum/Quorum/QuorumPeerMain)
+> Region Server(HRegion Server)
+> Regions
+
+>>>>         To start hbase daemon            : start-hbase.sh
+             To Enter into Hbase shell        : Hbase shell
+
+Hmaster: Metadata Storage of all Hbase table data
+         For bootstrap each & every region server 
+         To provide failover mechanism of region server 
+         Region v/s Region server mapping
+       
+Hmaster configuration : we will configure the Hmaster in $Hbase_home/conf/hbase-site.xml
+                        <property>
+                        <name> hbase.rootdir</name>
+                        <value>hdfs//localhost:8020/hbase</value>
+                        </property>
+                          
+                        In the above property, hbase will define the HDFS path where the hbase tabular data will be stored.
+                                
+                        <property>
+                        <name> hbase.cluster.distributed</name>
+                        <value>true</value>
+                        </property>
+                          
+                        In the above property value is true, which means that hmaster & zookeeper are running in a distributed model.
+
+> Hmaster(Hmaster)
+> Zookeeper(HQuorum/Quorum/QuorumPeerMain)
+> Region Server(HRegion Server)
+> Regions
+
+>>>>         To start hbase daemon            : start-hbase.sh
+             To Enter into Hbase shell        : Hbase shell
+
+Hmaster: Metadata Storage of all Hbase table data
+         For bootstrap each & every region server 
+         To provide failover mechanism of region server 
+         Region v/s Region server mapping
+       
+Hmaster configuration : we will configure the Hmaster in $Hbase_home/conf/hbase-site.xml
+                        <property>
+                        <name> hbase.rootdir</name>
+                        <value>hdfs//localhost:8020/hbase</value>
+                        </property>
+                          
+                        In the above property, hbase will define the HDFS path where the hbase tabular data will be stored.
+                                
+                        <property>
+                        <name> hbase.cluster.distributed</name>
+                        <value>true</value>
+                        </property>
+                          
+                        In the above property value is true, which means that hmaster & zookeeper are running in a distributed model.
