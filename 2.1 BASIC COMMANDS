@@ -1,0 +1,60 @@
+--General Commands--------------------------------------
+
+> status     - Provides the status of HBase, for example, the number of servers.
+             - status 'simple', status 'detailed', status 'summary'
+  
+> version    - Provides the version of HBase being used.
+> table_help - Provides help for table-reference commands.
+> whoami     - Provides information about the user.
+
+---Data Definition Language--------------------------------------
+
+> create - Creates a table.
+           create ‘<table name>’,’<column family>’ 
+           create ‘<table name>’, ’<column family 001>’, ’<column family 002>’ 
+   
+> list - Lists all the tables in HBase.
+
+> disable - Disables a table.
+            disable '<tablename>'   
+      
+> is_disabled - Verifies whether a table is disabled.
+                is_disabled '<tablename>'  
+ 
+> enable - Enables a table.
+           enable '<tablename>'  
+
+> is_enabled - Verifies whether a table is enabled.
+               is_enabled '<tablename>'  
+
+> describe - Provides the description of a table.
+             describe '<tablename>' 
+
+> alter - Alters a table.
+
+> exists - Verifies whether a table exists.
+           exists '<tablename>'
+           
+> drop - Drops a table from HBase.
+         drop '<tablename>'
+  note: needs to disable the table before dropping it.
+  
+> drop_all - Drops the tables matching the ‘regex’ given in the command.
+             drop_all 'tab001'
+             
+Java Admin API - Prior to all the above commands, Java provides an Admin API to achieve DDL functionalities through programming. 
+                 Under org.apache.hadoop.hbase.client package, HBaseAdmin and HTableDescriptor are the two important classes 
+                 in this package that provide DDL functionalities.
+
+
+---Data Manipulation Language--------------------------------------
+
+> put - Puts a cell value at a specified column in a specified row in a particular table.
+> get - Fetches the contents of row or a cell.
+> delete - Deletes a cell value in a table.
+> deleteall - Deletes all the cells in a given row.
+> scan - Scans and returns the table data.
+> count - Counts and returns the number of rows in a table.
+> truncate - Disables, drops, and recreates a specified table.
+> Java client API - Prior to all the above commands, Java provides a client API to achieve DML functionalities, CRUD (Create Retrieve Update Delete) operations and more through programming, under org.apache.hadoop.hbase.client package. HTable Put and Get are the important classes in this package.
+
