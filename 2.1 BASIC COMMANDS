@@ -40,7 +40,7 @@
   note: needs to disable the table before dropping it.
   
 > drop_all - Drops the tables matching the ‘regex’ given in the command.
-             drop_all 'tab001'
+             drop_all 'tab*'
              
 Java Admin API - Prior to all the above commands, Java provides an Admin API to achieve DDL functionalities through programming. 
                  Under org.apache.hadoop.hbase.client package, HBaseAdmin and HTableDescriptor are the two important classes 
@@ -50,11 +50,34 @@ Java Admin API - Prior to all the above commands, Java provides an Admin API to 
 ---Data Manipulation Language--------------------------------------
 
 > put - Puts a cell value at a specified column in a specified row in a particular table.
+       for entering data into table: put '<<tablename>>','<<row>>','<<colfam>>:<<column qualifier name>>', '<<values>>'
+			                         	   : put 'htab', 'row1', 'colfam1:HDFS' 'For storage only' 
+
 > get - Fetches the contents of row or a cell.
+      :  get 'htab','row6'
+
 > delete - Deletes a cell value in a table.
+         : delete 'htab', 'row5', 'colfam1:Sqoop'; 
+         
 > deleteall - Deletes all the cells in a given row.
+
 > scan - Scans and returns the table data.
+       : scan 'htab'
+       : scan 'htab',{LIMIT=>3,STARTROW=>'row4'} 
+       
 > count - Counts and returns the number of rows in a table.
+        : count ‘<table name>’
+        
 > truncate - Disables, drops, and recreates a specified table.
-> Java client API - Prior to all the above commands, Java provides a client API to achieve DML functionalities, CRUD (Create Retrieve Update Delete) operations and more through programming, under org.apache.hadoop.hbase.client package. HTable Put and Get are the important classes in this package.
+           : truncate 'table name' 
+
+>  For adding column                       -  alter 'htab',{NAME=> 'colfam2'} 		        
+
+>  For adding data to the new column       -  put 'htab','row1','colfam2: status' , 'Above Average'
+
+>  Updating data in the table              -  put ‘table name’,’row ’,'Column family:column name',’new value’
+ 
+> Java client API - Prior to all the above commands, Java provides a client API to achieve DML functionalities,  
+  CRUD (Create Retrieve Update Delete) operations and more through programming,
+  under org.apache.hadoop.hbase.client package. HTable Put and Get are the important classes in this package.
 
