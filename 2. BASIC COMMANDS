@@ -73,10 +73,13 @@ Java Admin API - Prior to all the above commands, Java provides an Admin API to 
 
 >  For adding column                       -  alter 'htab',{NAME=> 'colfam2'} 		        
 
+>  Deleting column 			   - alter 'htab',{NAME=>'colfam2',METHOD=>'delete'}
+
 >  For adding data to the new column       -  put 'htab','row1','colfam2: status' , 'Above Average'
 
 >  Updating data in the table              -  put ‘table name’,’row ’,'Column family:column name',’new value’
- 
+
+
 > Java client API - Prior to all the above commands, Java provides a client API to achieve DML functionalities,  
   CRUD (Create Retrieve Update Delete) operations and more through programming,
   under org.apache.hadoop.hbase.client package. HTable Put and Get are the important classes in this package.
