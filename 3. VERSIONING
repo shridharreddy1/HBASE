@@ -1,13 +1,15 @@
-GUI of hbase: http://localhost:16010
-
 The process of keeping track of multiple changes happening to a particular tablecell is versioning.
 hbase0.98.x & above version are having the default version as 1.
 
 ---How to update data in hbase 
+
 by using the same 'put' command we can update the very hbase table but hbase internally manages the versioning concept 
 therefore we can see the previous version of update command.
+put '<tablename>','<rowno.>','<colfam>','<..........>'
+
 
 ---Delete a column in hbase
+
 alter 'htab',{NAME=>'colfam2',METHOD=>'delete'}
 
 ---Alter command in hbase
