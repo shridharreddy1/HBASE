@@ -1,3 +1,5 @@
+Source: https://www.edureka.co/blog/hbase-architecture/
+
 ---Component of HBase-----------------------------------
 
 > Hmaster(Hmaster)
@@ -5,8 +7,70 @@
 > Region Server(HRegion Server)
 > Regions
 
->>>>         To start hbase daemon            : start-hbase.sh
-             To Enter into Hbase shell        : Hbase shell
+
+
+HBase Architecture: Region
+------------------------------
+A region contains all the rows between the start key and the end key assigned to that region. 
+HBase tables can be divided into a number of regions in such a way that all the columns of a column family is stored in one region. 
+Each region contains the rows in a sorted order.
+
+Many regions are assigned to a Region Server, which is responsible for handling, managing, executing reads and writes operations 
+on that set of regions.
+
+So, concluding in a simpler way:
+
+A table can be divided into a number of regions. A Region is a sorted range of rows storing data between a start key and an end key.
+A Region has a default size of 256MB which can be configured according to the need.
+A Group of regions is served to the clients by a Region Server.
+A Region Server can serve approximately 1000 regions to the client.
+
+Now starting from the top of the hierarchy,
+I would first like to explain you about HMaster Server which acts similarly as a NameNode in HDFS. 
+Then, moving down in the hierarchy, I will take you through ZooKeeper and Region Server.
+
+HBase Architecture: HMaster
+---------------------------
+As in the below image, you can see the HMaster handles a collection of Region Server which resides on DataNode.
+Let us understand how HMaster does that.
+
+HBase HMaster performs DDL operations (create and delete tables) and assigns regions to the Region servers.
+It coordinates and manages the Region Server (similar as NameNode manages DataNode in HDFS).
+It assigns regions to the Region Servers on startup and re-assigns regions to Region Servers during recovery and load balancing.
+It monitors all the Region Server’s instances in the cluster (with the help of Zookeeper) and performs recovery activities whenever
+any Region Server is down.
+It provides an interface for creating, deleting and updating tables.
+
+HBase has a distributed and huge environment where HMaster alone is not sufficient to manage everything.
+So, you would be wondering what helps HMaster to manage this huge environment? That’s where ZooKeeper comes into the picture.
+After we understood how HMaster manages HBase environment, we will understand how Zookeeper helps HMaster in managing the environment. 
+
+HBase Architecture: ZooKeeper – The Coordinator
+------------------------------------------------
+Zookeeper acts like a coordinator inside HBase distributed environment. 
+It helps in maintaining server state inside the cluster by communicating through sessions.
+Every Region Server along with HMaster Server sends continuous heartbeat at regular interval to Zookeeper and it 
+checks which server is alive and available. It also provides server failure notifications so that, recovery measures can be executed.
+
+Referring from the above image you can see, there is an inactive server, which acts as a backup for active server.
+If the active server fails, it comes for the rescue.
+The active HMaster sends heartbeats to the Zookeeper while the inactive HMaster listens for the notification send by active HMaster.
+If the active HMaster fails to send a heartbeat the session is deleted and the inactive HMaster becomes active.
+While if a Region Server fails to send a heartbeat, the session is expired and all listeners are notified about it.
+Then HMaster performs suitable recovery actions.
+
+Zookeeper also maintains the .META Server’s path, which helps any client in searching for any region.
+The Client first has to check with .META Server in which Region Server a region belongs, and it gets the path of that Region Server. 
+As I talked about .META Server, let me first explain to you what is .META server?
+So, you can easily relate the work of ZooKeeper and .META Server together. 
+  
+
+
+
+
+
+
+
 
 Hmaster: Metadata Storage of all Hbase table data
          For bootstrap each & every region server 
@@ -28,30 +92,4 @@ Hmaster configuration : we will configure the Hmaster in $Hbase_home/conf/hbase-
                           
                         In the above property value is true, which means that hmaster & zookeeper are running in a distributed model.
 
-> Hmaster(Hmaster)
-> Zookeeper(HQuorum/Quorum/QuorumPeerMain)
-> Region Server(HRegion Server)
-> Regions
-
->>>>         To start hbase daemon            : start-hbase.sh
-             To Enter into Hbase shell        : Hbase shell
-
-Hmaster: Metadata Storage of all Hbase table data
-         For bootstrap each & every region server 
-         To provide failover mechanism of region server 
-         Region v/s Region server mapping
-       
-Hmaster configuration : we will configure the Hmaster in $Hbase_home/conf/hbase-site.xml
-                        <property>
-                        <name> hbase.rootdir</name>
-                        <value>hdfs//localhost:8020/hbase</value>
-                        </property>
-                          
-                        In the above property, hbase will define the HDFS path where the hbase tabular data will be stored.
-                                
-                        <property>
-                        <name> hbase.cluster.distributed</name>
-                        <value>true</value>
-                        </property>
-                          
-                        In the above property value is true, which means that hmaster & zookeeper are running in a distributed model.
+ 
