@@ -1,0 +1,6 @@
+ To start hbase daemon            : start-hbase.sh
+ To Enter into Hbase shell        : Hbase shell
+ 
+ GUI of hbase                     : http://localhost:16010
+ 
+ 
