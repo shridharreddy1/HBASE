@@ -6,7 +6,6 @@ hbase0.98.x & above version are having the default version as 1.
 by using the same 'put' command we can update the very hbase table but hbase internally manages the versioning concept 
       put '<tablename>','<rowno.>','<colfam>','<..........>'
 
-
 ---Delete a column in hbase
 
       alter 'htab',{NAME=>'colfam2',METHOD=>'delete'}
@@ -25,9 +24,8 @@ In the below structural changes of hbase tables only we are making use of alter 
       by using 'put' command change the column values
       
       For getting the version values
-      scan 'htab',VERSIONS=>5 
+      scan 'htab',{VERSIONS=>5} 
       no limit for version but will display the top 5 version
-      
       
       
   NOTE : Hbase will only understand one datatype i.e BYTEARRAY
@@ -37,18 +35,7 @@ In the below structural changes of hbase tables only we are making use of alter 
          
          we will not get 'natural join' support from hbase.
          
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
+                
+    
          
          
