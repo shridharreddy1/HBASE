@@ -4,13 +4,12 @@ hbase0.98.x & above version are having the default version as 1.
 ---How to update data in hbase 
 
 by using the same 'put' command we can update the very hbase table but hbase internally manages the versioning concept 
-therefore we can see the previous version of update command.
-put '<tablename>','<rowno.>','<colfam>','<..........>'
+      put '<tablename>','<rowno.>','<colfam>','<..........>'
 
 
 ---Delete a column in hbase
 
-alter 'htab',{NAME=>'colfam2',METHOD=>'delete'}
+      alter 'htab',{NAME=>'colfam2',METHOD=>'delete'}
 
 ---Alter command in hbase
 In the below structural changes of hbase tables only we are making use of alter command
@@ -19,8 +18,10 @@ In the below structural changes of hbase tables only we are making use of alter 
       
 --Versioning  
       By default versioning is 1 but updating it to 5
+      
       alter 'htab' ,{NAME => "colfam1",VERSIONS=>5}
-    
+      get 'tablename', 'rowid', {COLUMN => 'cf:info', VERSIONS => 5}
+      
       by using 'put' command change the column values
       
       For getting the version values
