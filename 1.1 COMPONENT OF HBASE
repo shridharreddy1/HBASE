@@ -64,14 +64,6 @@ The Client first has to check with .META Server in which Region Server a region 
 As I talked about .META Server, let me first explain to you what is .META server?
 So, you can easily relate the work of ZooKeeper and .META Server together. 
   
-
-
-
-
-
-
-
-
 Hmaster: Metadata Storage of all Hbase table data
          For bootstrap each & every region server 
          To provide failover mechanism of region server 
